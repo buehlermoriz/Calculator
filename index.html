@@ -1,21 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script defer src="./build/bundle.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-        <div id="aufgabe">
-            <p> Aufgabe:   0</p>
-        </div>
+    <h1>Taschenrechner</h1>
     <table>
         <tr>
-            <td>
-                <p id="display">0</p>
+            <td colspan="4">
+                <p id="task" class="fullLine">Aufgabe: <span></span></p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4">
+                <p id="display" class="fullLine">0</p>
             </td>
         </tr>
         <tr>
@@ -75,10 +79,14 @@
             <td>
                 <button class="button" id="button-0">0</button>
             </td>
-            <td>
+            <td colspan="2">
                 <button class="buttonLarge" id="button=">=</button>
             </td>
-           
+        </tr>
+        <tr>
+            <td colspan="4">
+                <p id="scoreboard" class="fullLine">Score</p>
+            </td>
         </tr>
     </table>
     
