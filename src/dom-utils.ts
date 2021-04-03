@@ -25,5 +25,3 @@ export const buttonEquals= document.getElementById("button=")! as HTMLInputEleme
 //DOM utils Tasks
 export const task= document.getElementById("task")! as HTMLInputElement
 export const scoreboard= document.getElementById("scoreboard")! as HTMLInputElement
-
-//test
