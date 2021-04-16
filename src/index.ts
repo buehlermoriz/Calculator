@@ -27,6 +27,9 @@ const buttonEquals= document.getElementById("button=")! as HTMLInputElement
 const task= document.getElementById("task")! as HTMLInputElement
 const scoreboard= document.getElementById("scoreboard")! as HTMLInputElement
 
+//DOM utils Display
+const display= document.getElementById("display") ! as HTMLInputElement
+
 //Eventlistener
 //numPad
 button1.addEventListener("click", function(){addInput("1")});
@@ -43,76 +46,165 @@ button0.addEventListener("click", function(){addInput("0")});
 
 //calc
 buttonAdd.addEventListener("click", function(){add()});
-buttonMult.addEventListener("click", function(){mult});
-buttonDev.addEventListener("click", function(){dev});
-buttonSub.addEventListener("click", function(){sub});
+buttonMult.addEventListener("click", function(){mult()});
+buttonDev.addEventListener("click", function(){dev()});
+buttonSub.addEventListener("click", function(){sub()});
+buttonEquals.addEventListener("click", function(){solve()});
 
+//loeschen
+buttonC.addEventListener("click", function(){c()});
+buttonCE.addEventListener("click", function(){ce()});
 
+//Variablen
 let slotOne :string ="";
 let slotTow: string ="";
-let numberOne: number;
+let numberOne: number; 
 let numberTwo: number;
 let result: number;
-let calc: any 
 let changeActiveSlot: boolean = true;
+let activeCalcType: string; 
 //Zusammenfassung Eventlistener 0-9 PROBLEM 01
 /*for(let i = 0; i<10; i++){
 button[i].addEventListener("click", function(){addInput(i)})
 }*/
 
-
-
-function addInput(input: string){
-if(changeActiveSlot===true){
-    slotOne = slotOne + input;
+function changeStringToInt (){
+  if(changeActiveSlot===true){
     numberOne = parseInt(slotOne);
   }
   else{
-    slotTow = slotTow + input;
     numberTwo = parseInt(slotTow);
   }
 }
-function add (){
-  console.log("function add")
-  console.log(numberOne)
-  console.log(numberTwo)
- result = numberOne + numberTwo;
- console.log(result)
- if(changeActiveSlot === true){
-   changeActiveSlot = false
- }
- else{
-   changeActiveSlot = true
- }
-}
-function sub (){
-  result = numberOne - numberTwo;
- }
- function mult (){
-  result = numberOne * numberTwo;
- }
- function dev (){
-  result = numberOne / numberTwo;
- }
-//Input wird zu Array hinzugefügt
-//function addInput (){
-//Array_input.push(1)
-//for(let i = 0; i<Array_input.length; i++){
-//  console.log(Array_input[i])
-//};
-/*
-button2.addEventListener("click", function () {
-  Array_input.push(2)
-  for(let i = 0; i<Array_input.length; i++){
-    console.log(Array_input[i])
+function changeSlot (){
+  if(changeActiveSlot === true){
+    changeActiveSlot = false
   }
-  });
-  
-  button3.addEventListener("click", function () {
-    Array_input.push(3)
-    for(let i = 0; i<Array_input.length; i++){
-      console.log(Array_input[i])
+  else{
+    changeActiveSlot = true
+  }
+}
+function addInput(input: string){
+if(changeActiveSlot===true){
+    slotOne = slotOne + input;
+    changeStringToInt();
+    changeDisplay(numberOne);
+  //  console.log("add Slot 1")
+  }
+  else{
+    slotTow = slotTow + input;
+   changeStringToInt();
+    changeDisplay(numberTwo);
+   // console.log("add Slot 2")
+  }
+}
+//Rechenarten
+function add (){
+  //Test ob beide Faelder eine Zahl besitzen
+    if( slotOne===""|| slotTow===""){
+      console.log("input fehlt")
+      changeSlot();
+      activeCalcType="+";
     }
-    });
-*/
-  //}
+    else{
+      result = numberOne + numberTwo;
+      numberTwo = result;
+      changeActiveSlot = true;
+      c();
+      changeDisplay(result);
+    }
+  }
+function sub (){
+//Test ob beide Faelder eine Zahl besitzen
+  if( slotOne===""|| slotTow===""){
+    console.log("input fehlt")
+    changeSlot();
+    activeCalcType="-";
+  }
+  else{
+    result = numberOne - numberTwo;
+    numberTwo = result;
+    changeActiveSlot = true;
+    c();
+    changeDisplay(result);
+  }
+}
+function mult (){
+//Test ob beide Faelder eine Zahl besitzen
+  if( slotOne===""|| slotTow===""){
+    console.log("input fehlt")
+    changeSlot();
+    activeCalcType="*";
+  }
+  else{
+    result = numberOne * numberTwo;
+    numberTwo = result;
+    changeActiveSlot = true;
+    c();
+    changeDisplay(result);
+  }
+}
+  function dev (){
+//Test ob beide Faelder eine Zahl besitzen
+  if( slotOne===""|| slotTow===""){
+    console.log("input fehlt")
+    changeSlot();
+    activeCalcType="/";
+  }
+  else{
+    result = numberOne / numberTwo;
+    numberTwo = result;
+    changeActiveSlot = true;
+    c();
+    changeDisplay(result);
+  }
+}
+    
+//Anzeige
+ function changeDisplay (input: number){
+   display.innerHTML = input.toString();
+ }
+// Gleich
+function solve(){
+switch(activeCalcType){
+  case "+":
+    add();
+    break;
+  case "-":
+    sub();
+    break;
+  case "*":
+    mult();
+    break;
+  case "/":
+    dev();
+    break;
+  default:
+    console.error("keine Rechenart gefunden");
+}
+
+}
+//Loeschen
+function c (){
+  if (changeActiveSlot==true){
+    slotOne="0";
+    changeStringToInt();
+    changeDisplay(numberOne);
+
+  }
+  else{
+    slotTow="0";
+    changeStringToInt();
+    changeDisplay(numberTwo);
+  }
+}
+function ce(){
+  slotOne="0";
+  slotTow="0";
+  changeStringToInt();
+  changeSlot();
+  changeStringToInt();
+  changeSlot();
+  changeDisplay(numberOne);
+   
+}
