@@ -1,47 +1,19 @@
+import { buttonList, buttonAdd, buttonC, buttonCE, buttonDev, buttonEquals, buttonMult, buttonSub, display } from "./dom-utils";
+
+function debug(){
+  console.log("slot 1: " + slotOne);
+  console.log("nummer 1: " + numberOne);
+  console.log("slot 2: " + slotTow);
+  console.log("nummer 2: " + numberTwo);
+  console.log("ergebnis: " + result);
+}
 //Import aus Dom-utils PROBLEM 02
-//DOM utils numPad
-const button1 = document.getElementById("button-1")! as HTMLInputElement
-const button2 = document.getElementById("button-2")! as HTMLInputElement
-const button3 = document.getElementById("button-3")! as HTMLInputElement
-const button4 = document.getElementById("button-4")! as HTMLInputElement
-const button5 = document.getElementById("button-5")! as HTMLInputElement
-const button6 = document.getElementById("button-6")! as HTMLInputElement
-const button7 = document.getElementById("button-7")! as HTMLInputElement
-const button8 = document.getElementById("button-8")! as HTMLInputElement
-const button9= document.getElementById("button-9")! as HTMLInputElement
-const button0= document.getElementById("button-0")! as HTMLInputElement
-const buttonComma= document.getElementById("button,")! as HTMLInputElement
-
-//DOM utils calc
-const buttonAdd= document.getElementById("button+")! as HTMLInputElement
-const buttonSub= document.getElementById("button-")! as HTMLInputElement
-const buttonMult= document.getElementById("buttonX")! as HTMLInputElement
-const buttonDev= document.getElementById("button/")! as HTMLInputElement
-
-const buttonC= document.getElementById("buttonC")! as HTMLInputElement
-const buttonCE= document.getElementById("buttonCE")! as HTMLInputElement
-
-const buttonEquals= document.getElementById("button=")! as HTMLInputElement
-
-//DOM utils Tasks
-const task= document.getElementById("task")! as HTMLInputElement
-const scoreboard= document.getElementById("scoreboard")! as HTMLInputElement
-
-//DOM utils Display
-const display= document.getElementById("display") ! as HTMLInputElement
-
 //Eventlistener
 //numPad
-button1.addEventListener("click", function(){addInput("1")});
-button2.addEventListener("click", function(){addInput("2")});
-button3.addEventListener("click", function(){addInput("3")});
-button4.addEventListener("click", function(){addInput("4")});
-button5.addEventListener("click", function(){addInput("5")});
-button6.addEventListener("click", function(){addInput("6")});
-button7.addEventListener("click", function(){addInput("7")});
-button8.addEventListener("click", function(){addInput("8")});
-button9.addEventListener("click", function(){addInput("9")});
-button0.addEventListener("click", function(){addInput("0")});
+for(let button of buttonList){
+  let i:string = buttonList.indexOf(button).toString();
+  button.addEventListener("click", function(){addInput(i)});
+}
 //buttonComma.addEventListener("click", function(){addInput(",")});
 
 //calc
@@ -61,12 +33,9 @@ let slotTow: string ="";
 let numberOne: number; 
 let numberTwo: number;
 let result: number;
-let changeActiveSlot: boolean = false;
+let changeActiveSlot: boolean = true;
 let activeCalcType: string; 
-//Zusammenfassung Eventlistener 0-9 PROBLEM 01
-/*for(let i = 0; i<10; i++){
-button[i].addEventListener("click", function(){addInput(i)})
-}*/
+
 
 function changeStringToInt (){
   if(changeActiveSlot===true){
@@ -89,13 +58,11 @@ if(changeActiveSlot===true){
     slotOne = slotOne + input;
     changeStringToInt();
     changeDisplay(numberOne);
-  //  console.log("add Slot 1")
   }
   else{
     slotTow = slotTow + input;
    changeStringToInt();
     changeDisplay(numberTwo);
-   // console.log("add Slot 2")
   }
 }
 //Rechenarten
@@ -111,71 +78,80 @@ else if(slotTow===""){
 }
 else{
   result = numberOne + numberTwo;
-  slotOne=String(result);
+  changeActiveSlot= false;
+  slotTow=String(result);
   changeStringToInt();
-  changeActiveSlot = false;
+  changeActiveSlot = true;
   c();
   changeDisplay(result);
 }
   }
 function sub (){
-//Test ob beide Faelder eine Zahl besitzen
-if( slotOne===""){
-  changeActiveSlot=true;
-  activeCalcType="-";
-}
-else if(slotTow===""){
-  changeActiveSlot=false;
-  activeCalcType="-";
-}
+    //Test ob beide Faelder eine Zahl besitzen
+  if( slotOne===""){
+    changeActiveSlot=true;
+    activeCalcType="-";
+  }
+  else if(slotTow===""){
+    changeActiveSlot=false;
+    activeCalcType="-";
+  }
   else{
     result = numberOne - numberTwo;
-    numberOne = result;
+    changeActiveSlot= true;
+    slotOne=String(result);
+    changeStringToInt();
     changeActiveSlot = false;
     c();
     changeDisplay(result);
   }
 }
 function mult (){
-//Test ob beide Faelder eine Zahl besitzen
-if( slotOne===""){
-  changeActiveSlot=true;
-  activeCalcType="*";
-}
-else if(slotTow===""){
-  changeActiveSlot=false;
-  activeCalcType="*";
-}
+  //Test ob beide Faelder eine Zahl besitzen
+  if( slotOne===""){
+    changeActiveSlot=true;
+    activeCalcType="*";
+  }
+  else if(slotTow===""){
+    changeActiveSlot=false;
+    activeCalcType="*";
+  }
   else{
     result = numberOne * numberTwo;
-    numberOne = result;
-    changeActiveSlot = false;
-    c();
-    changeDisplay(result);
+  changeActiveSlot= false;
+  slotTow=String(result);
+  changeStringToInt();
+  changeActiveSlot = true;
+  c();
+  changeDisplay(result);
   }
 }
-  function dev (){
-//Test ob beide Faelder eine Zahl besitzen
-if( slotOne===""){
-  changeActiveSlot=true;
-  activeCalcType="/";
-}
-else if(slotTow===""){
-  changeActiveSlot=false;
-  activeCalcType="/";
-}
+function dev (){
+  //Test ob beide Faelder eine Zahl besitzen
+  if( slotOne===""){
+    changeActiveSlot=true;
+    activeCalcType="/";
+  }
+  else if(slotTow===""){
+    changeActiveSlot=false;
+    activeCalcType="/";
+  }
   else{
-    result = numberOne / numberTwo;
-    numberOne = result;
-    changeActiveSlot = false;
-    c();
-    changeDisplay(result);
+  result = numberOne / numberTwo;
+  changeActiveSlot= true;
+  slotOne=String(result);
+  changeStringToInt();
+  changeActiveSlot = false;
+  c();
+  changeDisplay(result);
   }
 }
-    
 //Anzeige
  function changeDisplay (input: number){
    display.innerHTML = input.toString();
+ }
+ function changeBtnColor (){
+  
  }
 // Gleich
 function solve(){

@@ -1,14 +1,16 @@
 //DOM utils numPad
-export const button1 = document.getElementById("button-1")! as HTMLInputElement
-export const button2 = document.getElementById("button-2")! as HTMLInputElement
-export const button3 = document.getElementById("button-3")! as HTMLInputElement
-export const button4 = document.getElementById("button-4")! as HTMLInputElement
-export const button5 = document.getElementById("button-5")! as HTMLInputElement
-export const button6 = document.getElementById("button-6")! as HTMLInputElement
-export const button7 = document.getElementById("button-7")! as HTMLInputElement
-export const button8 = document.getElementById("button-8")! as HTMLInputElement
-export const button9= document.getElementById("button-9")! as HTMLInputElement
-export const button0= document.getElementById("button-0")! as HTMLInputElement
+export const buttonList:Array<HTMLInputElement>=[
+document.getElementById("button-0")! as HTMLInputElement,
+document.getElementById("button-1")! as HTMLInputElement,
+document.getElementById("button-2")! as HTMLInputElement,
+document.getElementById("button-3")! as HTMLInputElement,
+document.getElementById("button-4")! as HTMLInputElement,
+document.getElementById("button-5")! as HTMLInputElement,
+document.getElementById("button-6")! as HTMLInputElement,
+document.getElementById("button-7")! as HTMLInputElement,
+document.getElementById("button-8")! as HTMLInputElement,
+document.getElementById("button-9")! as HTMLInputElement,
+]
 export const buttonComma= document.getElementById("button,")! as HTMLInputElement
 
 //DOM utils calc
