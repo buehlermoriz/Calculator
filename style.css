@@ -63,3 +63,38 @@ h1{
     transform: scale(1,1);
   }
   
+/* Toggle switch between Calcmode and Learnmode */
+.toggle {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 62px;
+  height: 32px;
+  position: relative;
+  border-radius: 50px;
+  background-color: #cecece4f;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.toggle:before {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+ 
+  border: 1px solid #FFF;
+  left: 1px;
+  top: 1px;
+  transition: all cubic-bezier(0.4, 1.2, 1, 0.8) 0.2s;
+}
+.toggle:checked:before {
+  left: 32px;
+}
+#changeMode {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
