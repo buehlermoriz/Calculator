@@ -61,7 +61,7 @@ let slotTow: string ="";
 let numberOne: number; 
 let numberTwo: number;
 let result: number;
-let changeActiveSlot: boolean = true;
+let changeActiveSlot: boolean = false;
 let activeCalcType: string; 
 //Zusammenfassung Eventlistener 0-9 PROBLEM 01
 /*for(let i = 0; i<10; i++){
@@ -101,60 +101,73 @@ if(changeActiveSlot===true){
 //Rechenarten
 function add (){
   //Test ob beide Faelder eine Zahl besitzen
-    if( slotOne===""|| slotTow===""){
-      console.log("input fehlt")
-      changeSlot();
-      activeCalcType="+";
-    }
-    else{
-      result = numberOne + numberTwo;
-      numberTwo = result;
-      changeActiveSlot = true;
-      c();
-      changeDisplay(result);
-    }
+if( slotOne===""){
+  changeActiveSlot=true;
+  activeCalcType="+";
+}
+else if(slotTow===""){
+  changeActiveSlot=false;
+  activeCalcType="+";
+}
+else{
+  result = numberOne + numberTwo;
+  slotOne=String(result);
+  changeStringToInt();
+  changeActiveSlot = false;
+  c();
+  changeDisplay(result);
+}
   }
 function sub (){
 //Test ob beide Faelder eine Zahl besitzen
-  if( slotOne===""|| slotTow===""){
-    console.log("input fehlt")
-    changeSlot();
-    activeCalcType="-";
-  }
+if( slotOne===""){
+  changeActiveSlot=true;
+  activeCalcType="-";
+}
+else if(slotTow===""){
+  changeActiveSlot=false;
+  activeCalcType="-";
+}
   else{
     result = numberOne - numberTwo;
-    numberTwo = result;
-    changeActiveSlot = true;
+    numberOne = result;
+    changeActiveSlot = false;
     c();
     changeDisplay(result);
   }
 }
 function mult (){
 //Test ob beide Faelder eine Zahl besitzen
-  if( slotOne===""|| slotTow===""){
-    console.log("input fehlt")
-    changeSlot();
-    activeCalcType="*";
-  }
+if( slotOne===""){
+  changeActiveSlot=true;
+  activeCalcType="*";
+}
+else if(slotTow===""){
+  changeActiveSlot=false;
+  activeCalcType="*";
+}
   else{
     result = numberOne * numberTwo;
-    numberTwo = result;
-    changeActiveSlot = true;
+    numberOne = result;
+    changeActiveSlot = false;
     c();
     changeDisplay(result);
   }
 }
   function dev (){
 //Test ob beide Faelder eine Zahl besitzen
-  if( slotOne===""|| slotTow===""){
-    console.log("input fehlt")
-    changeSlot();
-    activeCalcType="/";
-  }
+if( slotOne===""){
+  changeActiveSlot=true;
+  activeCalcType="/";
+}
+else if(slotTow===""){
+  changeActiveSlot=false;
+  activeCalcType="/";
+}
   else{
     result = numberOne / numberTwo;
-    numberTwo = result;
-    changeActiveSlot = true;
+    numberOne = result;
+    changeActiveSlot = false;
     c();
     changeDisplay(result);
   }
@@ -187,24 +200,23 @@ switch(activeCalcType){
 //Loeschen
 function c (){
   if (changeActiveSlot==true){
-    slotOne="0";
+    slotOne="";
     changeStringToInt();
-    changeDisplay(numberOne);
-
+    changeDisplay(0);
   }
   else{
-    slotTow="0";
+    slotTow="";
     changeStringToInt();
-    changeDisplay(numberTwo);
+    changeDisplay(0);
   }
 }
 function ce(){
-  slotOne="0";
-  slotTow="0";
+  slotOne="";
+  slotTow="";
   changeStringToInt();
   changeSlot();
   changeStringToInt();
   changeSlot();
-  changeDisplay(numberOne);
+  changeDisplay(0);
    
 }
