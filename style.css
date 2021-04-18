@@ -93,7 +93,7 @@ h1{
 .toggle:checked:before {
   left: 32px;
 }
-#changeMode, #scoreboard, #selectOpperators {
+#changeMode, #scoreboard, #selectOpperators, #maxFigures {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -101,7 +101,7 @@ h1{
 
 }
 
-#scoreboard1, #scoreboard2 , #task, #selectOpperators {
+#scoreboard1, #scoreboard2 , #task, #selectOpperators, #maxFigures {
   display: none;
 }
 

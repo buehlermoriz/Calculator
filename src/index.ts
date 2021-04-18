@@ -1,5 +1,5 @@
 import { add, mult, dev, sub, addInput, c, ce, solve } from "./calcmode";
-import { buttonList, buttonAdd, buttonC, buttonCE, buttonDev, buttonEquals, buttonMult, buttonSub, changeMode, task, selectOpperators, scoreboard1, scoreboard2} from "./dom-utils";
+import { buttonList, buttonAdd, buttonC, buttonCE, buttonDev, buttonEquals, buttonMult, buttonSub, changeMode, task, selectOpperators, scoreboard1, scoreboard2, maxFigures} from "./dom-utils";
 import {checkResult, Taskmanager } from "./taskmode";
 
 for(let button of buttonList){
@@ -38,6 +38,7 @@ changeMode.addEventListener('change', ()=>{
   scoreboard1.style.display = "block";
   scoreboard2.style.display = "block";
   selectOpperators.style.display = "block";
+  maxFigures.style.display = "block";
   buttonEquals.addEventListener("click", function(){checkResult()});
   Taskmanager();
 
@@ -52,6 +53,7 @@ else{
   scoreboard1.style.display = "none";
   scoreboard2.style.display = "none";
   selectOpperators.style.display = "none";
+  maxFigures.style.display = "none";
 }
 });
 

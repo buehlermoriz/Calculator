@@ -1,5 +1,5 @@
 import { c, numberOne } from "./calcmode";
-import { buttonEquals, scoreboard1, scoreboard2, selectAdd, selectDiv, selectMult, selectSub, task } from "./dom-utils";
+import { buttonEquals, maxFigures, scoreboard1, scoreboard2, selectAdd, selectDiv, selectMult, selectSub, task } from "./dom-utils";
 
 let RndNumberOne: number; 
 let RndNumberTwo: number;
@@ -8,6 +8,9 @@ export var activeOpperator:Array<string>=[];
 var opperator: string;
 let scoreRight: number = 0;
 let scoreWrong: number = 0;
+//Problem: geht nicht als ersatz für die 100 bei rndNumberOne/Two
+let maxFigure: number = parseInt(maxFigures.value)
+
 
 export function Taskmanager(){
     generateVariables();
