@@ -1,6 +1,6 @@
 import { add, mult, dev, sub, addInput, c, ce, solve } from "./calcmode";
-import { buttonList, buttonAdd, buttonC, buttonCE, buttonDev, buttonEquals, buttonMult, buttonSub, display, changeMode, task, scoreboard} from "./dom-utils";
-import { checkResult, Taskmanager } from "./taskmode";
+import { buttonList, buttonAdd, buttonC, buttonCE, buttonDev, buttonEquals, buttonMult, buttonSub, changeMode, task, selectOpperators, scoreboard1, scoreboard2} from "./dom-utils";
+import {checkResult, Taskmanager } from "./taskmode";
 
 for(let button of buttonList){
   let i:string = buttonList.indexOf(button).toString();
@@ -27,16 +27,20 @@ changeMode.addEventListener('change', ()=>{
 
   
   if (changeMode.checked=== true){
-  buttonAdd.disabled==true;
+
+
   buttonAdd.style.backgroundColor="rgba(218, 223, 225, 0.8)";
   buttonSub.style.backgroundColor="rgba(218, 223, 225, 0.8)";
   buttonMult.style.backgroundColor="rgba(218, 223, 225, 0.8)";
   buttonDev.style.backgroundColor="rgba(218, 223, 225, 0.8)";
   buttonEquals.innerHTML = "&#10003";
   task.style.display = "block";
-  scoreboard.style.display = "block";
+  scoreboard1.style.display = "block";
+  scoreboard2.style.display = "block";
+  selectOpperators.style.display = "block";
   buttonEquals.addEventListener("click", function(){checkResult()});
   Taskmanager();
+
 }
 else{
   buttonAdd.style.backgroundColor="rgba(80,80,80,0.1)";
@@ -45,6 +49,10 @@ else{
   buttonSub.style.backgroundColor="rgba(80,80,80,0.1)";
   buttonEquals.innerHTML = "=";
   task.style.display = "none";
-  scoreboard.style.display = "none";
+  scoreboard1.style.display = "none";
+  scoreboard2.style.display = "none";
+  selectOpperators.style.display = "none";
 }
 });
+
+//choose Opperators

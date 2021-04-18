@@ -93,12 +93,18 @@ h1{
 .toggle:checked:before {
   left: 32px;
 }
-#changeMode, #scoreboard {
+#changeMode, #scoreboard, #selectOpperators {
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
+
 }
 
-#scoreboard , #task {
+#scoreboard1, #scoreboard2 , #task, #selectOpperators {
   display: none;
 }
+
+/* select opperators */
+
+/* max figures */

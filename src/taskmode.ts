@@ -1,46 +1,46 @@
-import { numberOne } from "./calcmode";
-import { scoreboard, task } from "./dom-utils";
+import { c, numberOne } from "./calcmode";
+import { buttonEquals, scoreboard1, scoreboard2, selectAdd, selectDiv, selectMult, selectSub, task } from "./dom-utils";
 
 let RndNumberOne: number; 
 let RndNumberTwo: number;
 let result: number;
-var opperator: number;
-let userResult: number;
+export var activeOpperator:Array<string>=[];
+var opperator: string;
 let scoreRight: number = 0;
 let scoreWrong: number = 0;
 
 export function Taskmanager(){
     generateVariables();
-    generateTask();
-    checkResult();
+   generateTask();
 }
 
 function generateVariables (){
-opperator =  Math.floor(Math.random()*3);
+opperator = activeOpperator[Math.floor(Math.random() * activeOpperator.length)];
+
 RndNumberOne = Math.floor(Math.random()*100);
 RndNumberTwo = Math.floor(Math.random()*100);
 }
 
+
 function generateTask (){
 switch (opperator){
-    case  0:
+    case "add" :
        result = RndNumberOne + RndNumberTwo
        displayTask(RndNumberOne.toString() + "+" + RndNumberTwo.toString());
     break;
-    case 1:
+    case "sub":
        result = RndNumberOne - RndNumberTwo
        displayTask(RndNumberOne.toString() + "-" + RndNumberTwo.toString());
     break;
-    case 2:
+    case "mult":
        result = RndNumberOne * RndNumberTwo
        displayTask(RndNumberOne.toString() + "*" + RndNumberTwo.toString());
     break;
-    case 3:
+    case "dev":
        result = RndNumberOne / RndNumberTwo
        displayTask(RndNumberOne.toString() + "/" + RndNumberTwo.toString());
     break;
     default:
-        console.error("There is no Opperator available");
     break;
         
         
@@ -51,12 +51,16 @@ if(result === numberOne){
 scoreRight = scoreRight + 1;
 displayScore();
 Taskmanager();
+c();
+changeEnterColor("green");
 
 
 }
 else{
 scoreWrong = scoreWrong + 1;
 displayScore();
+c();
+changeEnterColor("red");
 }
 }
 function displayTask (input: string){
@@ -65,5 +69,64 @@ function displayTask (input: string){
     
 }
 function displayScore (){
-    scoreboard.innerHTML = "richtige Antworten: " + scoreRight + " falsche Antworten: " + scoreWrong;
+    scoreboard1.innerHTML = "richtige Antworten: " + scoreRight;
+    scoreboard2.innerHTML ="falsche Antworten: " + scoreWrong;
 }
+
+function changeEnterColor(color:string){
+buttonEquals.style.backgroundColor=color;
+setTimeout(function(){buttonEquals.style.backgroundColor="rgba(80,80,80,0.1)";}, 700)
+}
+
+//add
+selectAdd.addEventListener('change', () =>{ 
+    if (selectAdd.checked == true){
+      activeOpperator.push("add")
+      Taskmanager();
+    }
+    if (selectAdd.checked == false){
+      activeOpperator.splice(activeOpperator.indexOf("add"))
+      Taskmanager();
+    }
+    });
+    //sub
+    selectSub.addEventListener('change', () =>{ 
+      if (selectSub.checked == true){
+        activeOpperator.push("sub")
+        Taskmanager();
+      }
+      if (selectSub.checked == false){
+        activeOpperator.splice(activeOpperator.indexOf("sub"))
+        Taskmanager();
+      }
+      });
+    //mult
+      selectMult.addEventListener('change', () =>{ 
+        if (selectMult.checked == true){
+          activeOpperator.push("mult")
+          Taskmanager();
+        }
+        if (selectMult.checked == false){
+          activeOpperator.splice(activeOpperator.indexOf("mult"))
+          Taskmanager();
+        }
+        });
+    //dev
+        selectDiv.addEventListener('change', () =>{ 
+          if (selectDiv.checked == true){
+            activeOpperator.push("dev")
+            Taskmanager();
+          }
+          if (selectDiv.checked == false){
+            activeOpperator.splice(activeOpperator.indexOf("dev"))
+            Taskmanager();
+          }
+          });
+    
+          /*function showArray (){
+            console.error("array:");
+            
+            for(var i = 0; i < activeOpperator.length ; i++){
+              console.log(activeOpperator[i])
+          }};
+          */

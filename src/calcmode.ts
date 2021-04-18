@@ -139,7 +139,7 @@ switch(activeCalcType){
     dev();
     break;
   default:
-    console.error("keine Rechenart gefunden");
+  break;
 }
 
 }

@@ -26,7 +26,11 @@ export const buttonEquals= document.getElementById("button=")! as HTMLInputEleme
 
 //DOM utils Tasks
 export const task= document.getElementById("task")! as HTMLInputElement;
-export const scoreboard= document.getElementById("scoreboard")! as HTMLInputElement;
+export const scoreboard1= document.getElementById("scoreboard1")! as HTMLInputElement;
+export const scoreboard2= document.getElementById("scoreboard2")! as HTMLInputElement;
+export const selectOpperators= document.getElementById("selectOpperators")! as HTMLInputElement;
+
+
 
 //DOM utils Display
 export const display= document.getElementById("display") ! as HTMLInputElement;
@@ -35,3 +39,9 @@ export const display= document.getElementById("display") ! as HTMLInputElement;
 //Taskmode
 
 export const changeMode = document.getElementById("modeToggle")as HTMLInputElement;
+
+//accepted Opperators
+export const selectAdd = document.getElementById("selectAdd")as HTMLInputElement;
+export const selectSub = document.getElementById("selectSub")as HTMLInputElement;
+export const selectMult = document.getElementById("selectMult")as HTMLInputElement;
+export const selectDiv = document.getElementById("selectDiv")as HTMLInputElement;
