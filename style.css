@@ -55,7 +55,7 @@ h1{
   .button::after, .buttonLarge::after {
     z-index: 1;
     opacity: 0;
-    border: 1px solid rgba(255,255,255,0.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     transform: scale(1.2,1.2);
   }
   .button:hover::after, .buttonLarge:hover::after {
@@ -93,8 +93,12 @@ h1{
 .toggle:checked:before {
   left: 32px;
 }
-#changeMode {
+#changeMode, #scoreboard {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#scoreboard , #task {
+  display: none;
 }

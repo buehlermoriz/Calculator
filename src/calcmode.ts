@@ -3,7 +3,7 @@ import { display } from "./dom-utils";
 
 let slotOne :string ="";
 let slotTow: string ="";
-let numberOne: number; 
+export let numberOne: number; 
 let numberTwo: number;
 let result: number;
 let changeActiveSlot: boolean = true;
@@ -120,7 +120,7 @@ export function dev (){
   }
 }
 //Anzeige
- function changeDisplay (input: number){
+function changeDisplay (input: number){
    display.innerHTML = input.toString();
  }
 // Gleich
