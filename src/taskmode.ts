@@ -1,15 +1,14 @@
-import { c, numberOne } from "./calcmode";
-import { buttonEquals, maxFigures, scoreboard1, scoreboard2, selectAdd, selectDiv, selectMult, selectSub, task } from "./dom-utils";
+import { c, numberOne, showSlots } from "./calcmode";
+import { buttonEquals, maxValues, scoreboard1, scoreboard2, selectAdd, selectDiv, selectMult, selectSub, task } from "./dom-utils";
 
 let RndNumberOne: number; 
 let RndNumberTwo: number;
-let result: number;
+let resultTask: number;
 export var activeOpperator:Array<string>=[];
 var opperator: string;
 let scoreRight: number = 0;
 let scoreWrong: number = 0;
-//Problem: geht nicht als ersatz für die 100 bei rndNumberOne/Two
-let maxFigure: number = parseInt(maxFigures.value)
+
 
 
 export function Taskmanager(){
@@ -20,27 +19,37 @@ export function Taskmanager(){
 function generateVariables (){
 opperator = activeOpperator[Math.floor(Math.random() * activeOpperator.length)];
 
-RndNumberOne = Math.floor(Math.random()*100);
-RndNumberTwo = Math.floor(Math.random()*100);
+RndNumberOne = Math.floor(Math.random()*maxValues.valueAsNumber);
+RndNumberTwo = Math.floor(Math.random()*maxValues.valueAsNumber);
+
+
+
+
 }
 
 
 function generateTask (){
 switch (opperator){
     case "add" :
-       result = RndNumberOne + RndNumberTwo
+
+       resultTask = RndNumberOne + RndNumberTwo
        displayTask(RndNumberOne.toString() + "+" + RndNumberTwo.toString());
     break;
     case "sub":
-       result = RndNumberOne - RndNumberTwo
+       resultTask = RndNumberOne - RndNumberTwo
+       if (resultTask < 0){
+         Taskmanager();
+       }
+       else{
        displayTask(RndNumberOne.toString() + "-" + RndNumberTwo.toString());
+       }
     break;
     case "mult":
-       result = RndNumberOne * RndNumberTwo
+       resultTask = RndNumberOne * RndNumberTwo
        displayTask(RndNumberOne.toString() + "*" + RndNumberTwo.toString());
     break;
     case "dev":
-       result = RndNumberOne / RndNumberTwo
+       resultTask = RndNumberOne / RndNumberTwo
        displayTask(RndNumberOne.toString() + "/" + RndNumberTwo.toString());
     break;
     default:
@@ -50,7 +59,13 @@ switch (opperator){
 }
 }
 export function checkResult (){
-if(result === numberOne){
+
+console.log("result Task: "+ resultTask);
+console.log("Number One: " + numberOne);
+
+
+
+if(resultTask === numberOne){
 scoreRight = scoreRight + 1;
 displayScore();
 Taskmanager();
@@ -68,7 +83,7 @@ changeEnterColor("red");
 }
 function displayTask (input: string){
     task.innerHTML = input.toString();
-    console.log("Result: "+result);
+    console.log("Result: "+resultTask);
     
 }
 function displayScore (){

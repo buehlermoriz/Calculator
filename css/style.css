@@ -5,6 +5,7 @@ margin-right: auto;
 background-color: #008080; 
 font-family: Arial, Helvetica, sans-serif;
 }
+
 h1{
     text-align: center;
     color: white;
@@ -93,7 +94,7 @@ h1{
 .toggle:checked:before {
   left: 32px;
 }
-#changeMode, #scoreboard, #selectOpperators, #maxFigures {
+#changeMode, #scoreboard1, #scoreboard2, #selectOpperators, #maxFigures {
   display: flex;
   justify-content: center;
   align-items: center;

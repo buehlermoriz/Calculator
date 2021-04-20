@@ -51,10 +51,10 @@ else if(slotTow===""){
 }
 else{
   result = numberOne + numberTwo;
-  changeActiveSlot= false;
-  slotTow=String(result);
+  changeActiveSlot= true;
+  slotOne=String(result);
   changeStringToInt();
-  changeActiveSlot = true;
+  changeActiveSlot = false;
   c();
   changeDisplay(result);
 }
@@ -70,6 +70,7 @@ export function sub (){
     activeCalcType="-";
   }
   else{
+
     result = numberOne - numberTwo;
     changeActiveSlot= true;
     slotOne=String(result);
@@ -91,10 +92,10 @@ export function mult (){
   }
   else{
     result = numberOne * numberTwo;
-  changeActiveSlot= false;
+  changeActiveSlot= true;
   slotTow=String(result);
   changeStringToInt();
-  changeActiveSlot = true;
+  changeActiveSlot = false;
   c();
   changeDisplay(result);
   }
@@ -166,4 +167,17 @@ export function ce(){
   changeDisplay(0);
    
 
+}
+
+
+export function showSlots(){
+  console.log("Slot1: "+ slotOne);
+  console.log("Number1: "+ numberOne);
+  console.log("Slot2: "+ slotTow);
+  console.log("Number2: "+ numberTwo);
+  console.log("result: "+ result);
+  
+  
+  
+  
 }

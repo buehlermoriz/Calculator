@@ -29,7 +29,9 @@ export const task= document.getElementById("task")! as HTMLInputElement;
 export const scoreboard1= document.getElementById("scoreboard1")! as HTMLInputElement;
 export const scoreboard2= document.getElementById("scoreboard2")! as HTMLInputElement;
 export const selectOpperators= document.getElementById("selectOpperators")! as HTMLInputElement;
+export const maxValues = document.getElementById("maxValues")! as HTMLInputElement;
 export const maxFigures = document.getElementById("maxFigures")! as HTMLInputElement;
+
 
 
 

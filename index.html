@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script type="module" src="./build/bundle.js" defer ></script>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
     <h1>Taschenrechner</h1>
@@ -97,17 +97,18 @@
         <tr>
             <td colspan="4">
                 <div id="selectOpperators" class="fullLine">
-                    <input id="selectAdd" type="checkbox"  > Addition
-                    <input id="selectSub" type="checkbox" > Subtraktion
-                    <input id="selectMult" type="checkbox" > Multiplikation
-                    <input id="selectDiv" type="checkbox" > Division
+                    <input id="selectAdd" class="checkbox" type="checkbox"  >Addition
+                    <input id="selectSub" class="checkbox" type="checkbox" > Subtraktion
+                    <input id="selectMult" class="checkbox" type="checkbox" > Multiplikation
+                    <input id="selectDiv" class="checkbox" type="checkbox" > Division
+                    
                 </div>
             </td>
         </tr>
         <tr>
             <td colspan="4">
-                <p id="maxFigures" class="fullLine">
-                   Zahlenraum bis: <input  type="number" id="maxNumber" value="100"/>
+                <p  class="fullLine"id="maxFigures" >
+                   Zahlenraum bis: <input  type="number" id="maxValues" value="100"/>
                     </p>
             </td>
         </tr>
