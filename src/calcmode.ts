@@ -1,10 +1,12 @@
 import { display } from "./dom-utils";
+import { activeOpperator } from "./taskmode";
+
 
 
 let slotOne :string ="";
 let slotTow: string ="";
 export let numberOne: number; 
-let numberTwo: number;
+export let numberTwo: number;
 let result: number;
 let changeActiveSlot: boolean = true;
 let activeCalcType: string; 
@@ -70,7 +72,6 @@ export function sub (){
     activeCalcType="-";
   }
   else{
-
     result = numberOne - numberTwo;
     changeActiveSlot= true;
     slotOne=String(result);
@@ -142,7 +143,6 @@ switch(activeCalcType){
   default:
   break;
 }
-
 }
 //Loeschen
 export function c (){
@@ -160,24 +160,19 @@ export function c (){
 export function ce(){
   slotOne="";
   slotTow="";
+  changeActiveSlot=true;
   changeStringToInt();
   changeSlot();
   changeStringToInt();
   changeSlot();
   changeDisplay(0);
-   
-
 }
-
-
+/*
 export function showSlots(){
   console.log("Slot1: "+ slotOne);
   console.log("Number1: "+ numberOne);
   console.log("Slot2: "+ slotTow);
   console.log("Number2: "+ numberTwo);
   console.log("result: "+ result);
-  
-  
-  
-  
 }
+*/

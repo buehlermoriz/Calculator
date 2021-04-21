@@ -1,4 +1,4 @@
-import { c, numberOne, showSlots } from "./calcmode";
+import { c, numberOne, numberTwo} from "./calcmode";
 import { buttonEquals, maxValues, scoreboard1, scoreboard2, selectAdd, selectDiv, selectMult, selectSub, task } from "./dom-utils";
 
 let RndNumberOne: number; 
@@ -21,12 +21,7 @@ opperator = activeOpperator[Math.floor(Math.random() * activeOpperator.length)];
 
 RndNumberOne = Math.floor(Math.random()*maxValues.valueAsNumber);
 RndNumberTwo = Math.floor(Math.random()*maxValues.valueAsNumber);
-
-
-
-
 }
-
 
 function generateTask (){
 switch (opperator){
@@ -59,12 +54,6 @@ switch (opperator){
 }
 }
 export function checkResult (){
-
-console.log("result Task: "+ resultTask);
-console.log("Number One: " + numberOne);
-
-
-
 if(resultTask === numberOne){
 scoreRight = scoreRight + 1;
 displayScore();
