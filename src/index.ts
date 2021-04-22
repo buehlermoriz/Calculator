@@ -23,7 +23,6 @@ for (let button of buttonList) {
     addInput(i);
   });
 }
-//buttonComma.addEventListener("click", function(){addInput(",")});
 
 //CALCMODE
 

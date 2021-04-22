@@ -5,7 +5,7 @@ import { display } from "./dom-utils";
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 let slotOne: string = "";
-let slotTow: string = "";
+let slotTwo: string = "";
 export let numberOne: number;
 let numberTwo: number;
 let result: number;
@@ -20,7 +20,7 @@ function changeStringToInt() {
   if (changeActiveSlot === true) {
     numberOne = parseInt(slotOne);
   } else {
-    numberTwo = parseInt(slotTow);
+    numberTwo = parseInt(slotTwo);
   }
 }
 function changeSlot() {
@@ -36,7 +36,7 @@ export function addInput(input: string) {
     changeStringToInt();
     changeDisplay(numberOne);
   } else {
-    slotTow = slotTow + input;
+    slotTwo = slotTwo + input;
     changeStringToInt();
     changeDisplay(numberTwo);
   }
@@ -49,7 +49,7 @@ export function add() {
   if (slotOne === "") {
     changeActiveSlot = true;
     activeCalcType = "+";
-  } else if (slotTow === "") {
+  } else if (slotTwo === "") {
     changeActiveSlot = false;
     activeCalcType = "+";
   } else {
@@ -67,7 +67,7 @@ export function sub() {
   if (slotOne === "") {
     changeActiveSlot = true;
     activeCalcType = "-";
-  } else if (slotTow === "") {
+  } else if (slotTwo === "") {
     changeActiveSlot = false;
     activeCalcType = "-";
   } else {
@@ -85,13 +85,13 @@ export function mult() {
   if (slotOne === "") {
     changeActiveSlot = true;
     activeCalcType = "*";
-  } else if (slotTow === "") {
+  } else if (slotTwo === "") {
     changeActiveSlot = false;
     activeCalcType = "*";
   } else {
     result = numberOne * numberTwo;
     changeActiveSlot = true;
-    slotTow = String(result);
+    slotTwo = String(result);
     changeStringToInt();
     changeActiveSlot = false;
     c();
@@ -103,7 +103,7 @@ export function dev() {
   if (slotOne === "") {
     changeActiveSlot = true;
     activeCalcType = "/";
-  } else if (slotTow === "") {
+  } else if (slotTwo === "") {
     changeActiveSlot = false;
     activeCalcType = "/";
   } else {
@@ -152,14 +152,14 @@ export function c() {
     changeStringToInt();
     changeDisplay(0);
   } else {
-    slotTow = "";
+    slotTwo = "";
     changeStringToInt();
     changeDisplay(0);
   }
 }
 export function ce() {
   slotOne = "";
-  slotTow = "";
+  slotTwo = "";
   changeActiveSlot = true;
   changeStringToInt();
   changeSlot();
