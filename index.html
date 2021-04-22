@@ -1,129 +1,125 @@
 <!DOCTYPE html>
 <html lang="de">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script type="module" src="./build/bundle.js" defer ></script>
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-<body>
+    <script type="module" src="./build/bundle.js" defer></script>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
     <h1>Taschenrechner</h1>
     <table>
+      <tr>
+        <td colspan="4">
+          <p id="task" class="fullLine">Aufgabe: <span></span></p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <p id="display" class="fullLine">0</p>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button class="buttonLarge" id="buttonC">C</button>
+        </td>
+        <td>
+          <button class="button" id="buttonCE">CE</button>
+        </td>
+        <td>
+          <button class="button" id="button+">+</button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button class="button" id="button-1">1</button>
+        </td>
+        <td>
+          <button class="button" id="button-2">2</button>
+        </td>
+        <td>
+          <button class="button" id="button-3">3</button>
+        </td>
+        <td>
+          <button class="button" id="button-">-</button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button class="button" id="button-4">4</button>
+        </td>
+        <td>
+          <button class="button" id="button-5">5</button>
+        </td>
+        <td>
+          <button class="button" id="button-6">6</button>
+        </td>
+        <td>
+          <button class="button" id="buttonX">x</button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button class="button" id="button-7">7</button>
+        </td>
+        <td>
+          <button class="button" id="button-8">8</button>
+        </td>
+        <td>
+          <button class="button" id="button-9">9</button>
+        </td>
+        <td>
+          <button class="button" id="button/">/</button>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <button class="buttonLarge" id="button-0">0</button>
+        </td>
+        <td colspan="2">
+          <button class="buttonLarge" id="button=">=</button>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+          <p id="changeMode" class="fullLine">
+            Rechenmodus
+            <input class="toggle" type="checkbox" id="modeToggle" />
+            Lernmodus
+          </p>
+        </td>
+      </tr>
+      <div id="elementsLearnmode">
         <tr>
-            <td colspan="4">
-                <p id="task" class="fullLine">Aufgabe: <span></span></p>
-            </td>
+          <td colspan="4">
+            <div id="selectOpperators" class="fullLine">
+              <input id="selectAdd" class="checkbox" type="checkbox" />Addition
+              <input id="selectSub" class="checkbox" type="checkbox" />
+              Subtraktion
+              <input id="selectMult" class="checkbox" type="checkbox" />
+              Multiplikation
+              <input id="selectDiv" class="checkbox" type="checkbox" /> Division
+            </div>
+          </td>
         </tr>
         <tr>
-            <td colspan="4">
-                <p id="display" class="fullLine">0</p>
-            </td>
+          <td colspan="4">
+            <p class="fullLine" id="maxFigures">
+              Zahlenraum bis:
+              <input type="number" id="maxValues" x value="100" />
+            </p>
+          </td>
         </tr>
         <tr>
-            <td colspan="2">
-                <button class="buttonLarge" id="buttonC">C</button>
-            </td>
-            <td>
-                <button class="button" id="buttonCE">CE</button>
-            </td>
-            <td>
-                <button class="button" id="button+">+</button>
-            </td>
+          <td colspan="2">
+            <p id="scoreboard1" class="buttonLarge"></p>
+          </td>
+          <td colspan="2">
+            <p id="scoreboard2" class="buttonLarge"></p>
+          </td>
         </tr>
-        <tr>
-            <td>
-                <button class="button" id="button-1">1</button>
-            </td>
-            <td>
-                <button class="button" id="button-2">2</button>
-            </td>
-            <td>
-                <button class="button" id="button-3">3</button>
-            </td>
-            <td>
-                <button class="button" id="button-">-</button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <button class="button" id="button-4">4</button>
-            </td>
-            <td>
-                <button class="button" id="button-5">5</button>
-            </td>
-            <td>
-                <button class="button" id="button-6">6</button>
-            </td>
-            <td>
-                <button class="button" id="buttonX">x</button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <button class="button" id="button-7">7</button>
-            </td>
-            <td>
-                <button class="button" id="button-8">8</button>
-            </td>
-            <td>
-                <button class="button" id="button-9">9</button>
-            </td>
-            <td>
-                <button class="button" id="button/">/</button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <button class="button" id="button-,">,</button>
-            </td>
-            <td>
-                <button class="button" id="button-0">0</button>
-            </td>
-            <td colspan="2">
-                <button class="buttonLarge" id="button=">=</button>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="4">
-                <p id="changeMode" class="fullLine">
-                    Rechenmodus
-                    <input class="toggle" type="checkbox" id="modeToggle"/>
-                    Lernmodus</p>
-            </td>
-        </tr>
-        <div id="elementsLearnmode">
-        <tr>
-            <td colspan="4">
-                <div id="selectOpperators" class="fullLine">
-                    <input id="selectAdd" class="checkbox" type="checkbox"  >Addition
-                    <input id="selectSub" class="checkbox" type="checkbox" > Subtraktion
-                    <input id="selectMult" class="checkbox" type="checkbox" > Multiplikation
-                    <input id="selectDiv" class="checkbox" type="checkbox" > Division
-                    
-                </div>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="4">
-                <p  class="fullLine"id="maxFigures" >
-                   Zahlenraum bis: <input  type="number" id="maxValues" x value="100"/>
-                    </p>
-                  
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <p id="scoreboard1" class="buttonLarge"></p>
-            </td>
-            <td colspan="2">
-                <p id="scoreboard2" class="buttonLarge"></p>
-            </td>
-        </tr>
-    </div>
+      </div>
     </table>
-    
-</body>
-
+  </body>
 </html>

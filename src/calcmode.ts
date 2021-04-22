@@ -1,166 +1,166 @@
 import { display } from "./dom-utils";
-import { activeOpperator } from "./taskmode";
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//VARIABLES
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-
-let slotOne :string ="";
-let slotTow: string ="";
-export let numberOne: number; 
-export let numberTwo: number;
+let slotOne: string = "";
+let slotTow: string = "";
+export let numberOne: number;
+let numberTwo: number;
 let result: number;
 let changeActiveSlot: boolean = true;
-let activeCalcType: string; 
+let activeCalcType: string;
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//HANDLE INPUT
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-function changeStringToInt (){
-  if(changeActiveSlot===true){
+function changeStringToInt() {
+  if (changeActiveSlot === true) {
     numberOne = parseInt(slotOne);
-  }
-  else{
+  } else {
     numberTwo = parseInt(slotTow);
   }
 }
-function changeSlot (){
-  if(changeActiveSlot === true){
-    changeActiveSlot = false
-  }
-  else{
-    changeActiveSlot = true
+function changeSlot() {
+  if (changeActiveSlot === true) {
+    changeActiveSlot = false;
+  } else {
+    changeActiveSlot = true;
   }
 }
-export function addInput(input: string){
-if(changeActiveSlot===true){
+export function addInput(input: string) {
+  if (changeActiveSlot === true) {
     slotOne = slotOne + input;
     changeStringToInt();
     changeDisplay(numberOne);
-  }
-  else{
+  } else {
     slotTow = slotTow + input;
-   changeStringToInt();
+    changeStringToInt();
     changeDisplay(numberTwo);
   }
 }
-//Rechenarten
-export function add (){
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//HERE HAPPENS THE MAGIC ~ AKA MATH
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+export function add() {
   //Test ob beide Faelder eine Zahl besitzen
-if( slotOne===""){
-  changeActiveSlot=true;
-  activeCalcType="+";
-}
-else if(slotTow===""){
-  changeActiveSlot=false;
-  activeCalcType="+";
-}
-else{
-  result = numberOne + numberTwo;
-  changeActiveSlot= true;
-  slotOne=String(result);
-  changeStringToInt();
-  changeActiveSlot = false;
-  c();
-  changeDisplay(result);
-}
-  }
-export function sub (){
-    //Test ob beide Faelder eine Zahl besitzen
-  if( slotOne===""){
-    changeActiveSlot=true;
-    activeCalcType="-";
-  }
-  else if(slotTow===""){
-    changeActiveSlot=false;
-    activeCalcType="-";
-  }
-  else{
-    result = numberOne - numberTwo;
-    changeActiveSlot= true;
-    slotOne=String(result);
+  if (slotOne === "") {
+    changeActiveSlot = true;
+    activeCalcType = "+";
+  } else if (slotTow === "") {
+    changeActiveSlot = false;
+    activeCalcType = "+";
+  } else {
+    result = numberOne + numberTwo;
+    changeActiveSlot = true;
+    slotOne = String(result);
     changeStringToInt();
     changeActiveSlot = false;
     c();
     changeDisplay(result);
   }
 }
-export function mult (){
+export function sub() {
   //Test ob beide Faelder eine Zahl besitzen
-  if( slotOne===""){
-    changeActiveSlot=true;
-    activeCalcType="*";
+  if (slotOne === "") {
+    changeActiveSlot = true;
+    activeCalcType = "-";
+  } else if (slotTow === "") {
+    changeActiveSlot = false;
+    activeCalcType = "-";
+  } else {
+    result = numberOne - numberTwo;
+    changeActiveSlot = true;
+    slotOne = String(result);
+    changeStringToInt();
+    changeActiveSlot = false;
+    c();
+    changeDisplay(result);
   }
-  else if(slotTow===""){
-    changeActiveSlot=false;
-    activeCalcType="*";
-  }
-  else{
+}
+export function mult() {
+  //Test ob beide Faelder eine Zahl besitzen
+  if (slotOne === "") {
+    changeActiveSlot = true;
+    activeCalcType = "*";
+  } else if (slotTow === "") {
+    changeActiveSlot = false;
+    activeCalcType = "*";
+  } else {
     result = numberOne * numberTwo;
-  changeActiveSlot= true;
-  slotTow=String(result);
-  changeStringToInt();
-  changeActiveSlot = false;
-  c();
-  changeDisplay(result);
+    changeActiveSlot = true;
+    slotTow = String(result);
+    changeStringToInt();
+    changeActiveSlot = false;
+    c();
+    changeDisplay(result);
   }
 }
-export function dev (){
+export function dev() {
   //Test ob beide Faelder eine Zahl besitzen
-  if( slotOne===""){
-    changeActiveSlot=true;
-    activeCalcType="/";
-  }
-  else if(slotTow===""){
-    changeActiveSlot=false;
-    activeCalcType="/";
-  }
-  else{
-  result = numberOne / numberTwo;
-  changeActiveSlot= true;
-  slotOne=String(result);
-  changeStringToInt();
-  changeActiveSlot = false;
-  c();
-  changeDisplay(result);
+  if (slotOne === "") {
+    changeActiveSlot = true;
+    activeCalcType = "/";
+  } else if (slotTow === "") {
+    changeActiveSlot = false;
+    activeCalcType = "/";
+  } else {
+    result = numberOne / numberTwo;
+    changeActiveSlot = true;
+    slotOne = String(result);
+    changeStringToInt();
+    changeActiveSlot = false;
+    c();
+    changeDisplay(result);
   }
 }
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//OUTPUT
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //Anzeige
-function changeDisplay (input: number){
-   display.innerHTML = input.toString();
- }
-// Gleich
-export function solve(){
-switch(activeCalcType){
-  case "+":
-    add();
-    break;
-  case "-":
-    sub();
-    break;
-  case "*":
-    mult();
-    break;
-  case "/":
-    dev();
-    break;
-  default:
-  break;
+function changeDisplay(input: number) {
+  display.innerHTML = input.toString();
 }
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//OTHER FUNCTIONS
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+// Gleich
+export function solve() {
+  switch (activeCalcType) {
+    case "+":
+      add();
+      break;
+    case "-":
+      sub();
+      break;
+    case "*":
+      mult();
+      break;
+    case "/":
+      dev();
+      break;
+    default:
+      break;
+  }
 }
 //Loeschen
-export function c (){
-  if (changeActiveSlot==true){
-    slotOne="";
+export function c() {
+  if (changeActiveSlot == true) {
+    slotOne = "";
     changeStringToInt();
     changeDisplay(0);
-  }
-  else{
-    slotTow="";
+  } else {
+    slotTow = "";
     changeStringToInt();
     changeDisplay(0);
   }
 }
-export function ce(){
-  slotOne="";
-  slotTow="";
-  changeActiveSlot=true;
+export function ce() {
+  slotOne = "";
+  slotTow = "";
+  changeActiveSlot = true;
   changeStringToInt();
   changeSlot();
   changeStringToInt();
