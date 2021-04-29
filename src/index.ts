@@ -16,6 +16,7 @@ import {
   scoreboard2,
   maxFigures,
 } from "./dom-utils";
+
 import { checkResult, Taskmanager } from "./taskmode";
 
 for (let button of buttonList) {
@@ -53,7 +54,7 @@ buttonCE.addEventListener("click", function () {
 
 //TASKMODE
 changeMode.addEventListener("change", () => {
-  if (changeMode.checked === true) {
+  if (changeMode.checked) {
     taskstyle();
     ce();
     Taskmanager();
@@ -61,8 +62,8 @@ changeMode.addEventListener("change", () => {
     calcstyle();
   }
 });
-function equalButtonPressed() {
-  if (changeMode.checked === true) {
+export function equalButtonPressed() {
+  if (changeMode.checked) {
     checkResult();
   } else {
     solve();

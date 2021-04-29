@@ -1,3 +1,7 @@
+import { add, addInput, ce, dev, mult, solve, sub } from "./calcmode";
+import { equalButtonPressed } from "./index";
+import { checkResult } from "./taskmode";
+
 //DOM utils numPad
 export const buttonList: Array<HTMLInputElement> = [
   document.getElementById("button-0")! as HTMLInputElement,
@@ -78,3 +82,70 @@ export const selectMult = document.getElementById(
 export const selectDiv = document.getElementById(
   "selectDiv"
 ) as HTMLInputElement;
+
+document.addEventListener("keydown", (e) => {
+  switch (e.code) {
+    //Num Pad -------------------------------
+    case "Digit0":
+      addInput("0");
+      break;
+    case "Digit1":
+      addInput("1");
+      break;
+    case "Digit2":
+      addInput("2");
+      break;
+    case "Digit3":
+      addInput("3");
+      break;
+    case "Digit4":
+      addInput("4");
+      break;
+    case "Digit5":
+      addInput("5");
+      break;
+    case "Digit6":
+      addInput("6");
+      break;
+    case "Digit7":
+      addInput("7");
+      break;
+    case "Digit8":
+      addInput("8");
+      break;
+    case "Digit9":
+      addInput("9");
+      break;
+
+    //others -------------------------------
+    //enter
+    case "Enter":
+      equalButtonPressed();
+    //ce
+    case "KeyC":
+      ce();
+      break;
+    //calc --------------------------------
+    //add
+    case "KeyQ":
+      add();
+      break;
+    //sub
+    case "KeyW":
+      sub();
+      break;
+    //mult
+    case "KeyE":
+      mult();
+      break;
+    //dev
+    case "KeyR":
+      dev();
+      break;
+
+    default:
+      console.log("test");
+
+      break;
+  }
+});
