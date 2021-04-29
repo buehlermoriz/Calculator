@@ -86,11 +86,11 @@ export function checkResult() {
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //add
 selectAdd.addEventListener("change", () => {
-  if (selectAdd.checked == true) {
+  if (selectAdd.checked) {
     activeOperator.push("add");
     Taskmanager();
   }
-  if (selectAdd.checked == false) {
+  if (selectAdd.checked) {
     activeOperator.splice(activeOperator.indexOf("add"));
     Taskmanager();
   }

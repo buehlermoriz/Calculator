@@ -1,4 +1,5 @@
 import { add, mult, dev, sub, addInput, c, ce, solve } from "./calcmode";
+import { buttonGrey, buttonNormal } from "./colors";
 import {
   buttonList,
   buttonAdd,
@@ -18,9 +19,9 @@ import {
 import { checkResult, Taskmanager } from "./taskmode";
 
 for (let button of buttonList) {
-  let i: string = buttonList.indexOf(button).toString();
+  let buttonIndex: string = buttonList.indexOf(button).toString();
   button.addEventListener("click", function () {
-    addInput(i);
+    addInput(buttonIndex);
   });
 }
 
@@ -68,10 +69,10 @@ function equalButtonPressed() {
   }
 }
 function calcstyle() {
-  buttonAdd.style.backgroundColor = "rgba(80,80,80,0.1)";
-  buttonMult.style.backgroundColor = "rgba(80,80,80,0.1)";
-  buttonDev.style.backgroundColor = "rgba(80,80,80,0.1)";
-  buttonSub.style.backgroundColor = "rgba(80,80,80,0.1)";
+  buttonAdd.style.backgroundColor = buttonGrey;
+  buttonMult.style.backgroundColor = buttonGrey;
+  buttonDev.style.backgroundColor = buttonGrey;
+  buttonSub.style.backgroundColor = buttonGrey;
   buttonEquals.innerHTML = "=";
   task.style.display = "none";
   scoreboard1.style.display = "none";
@@ -80,10 +81,10 @@ function calcstyle() {
   maxFigures.style.display = "none";
 }
 function taskstyle() {
-  buttonAdd.style.backgroundColor = "rgba(218, 223, 225, 0.8)";
-  buttonSub.style.backgroundColor = "rgba(218, 223, 225, 0.8)";
-  buttonMult.style.backgroundColor = "rgba(218, 223, 225, 0.8)";
-  buttonDev.style.backgroundColor = "rgba(218, 223, 225, 0.8)";
+  buttonAdd.style.backgroundColor = buttonNormal;
+  buttonSub.style.backgroundColor = buttonNormal;
+  buttonMult.style.backgroundColor = buttonNormal;
+  buttonDev.style.backgroundColor = buttonNormal;
   buttonEquals.innerHTML = "&#10003";
   task.style.display = "block";
   scoreboard1.style.display = "block";
