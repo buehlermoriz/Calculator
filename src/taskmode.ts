@@ -59,8 +59,12 @@ function generateTask() {
       break;
     case "dev":
       resultTask = RndNumberOne / RndNumberTwo;
+      if (resultTask % 1 !== 0) {
+        Taskmanager();
+      } else {
+        displayTask(RndNumberOne.toString() + "/" + RndNumberTwo.toString());
+      }
 
-      displayTask(RndNumberOne.toString() + "/" + RndNumberTwo.toString());
       break;
     default:
       break;
@@ -86,12 +90,12 @@ export function checkResult() {
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //add
 selectAdd.addEventListener("change", () => {
-  if (selectAdd.checked) {
+  if (selectAdd.checked == true) {
     activeOperator.push("add");
     Taskmanager();
   }
-  if (selectAdd.checked) {
-    activeOperator.splice(activeOperator.indexOf("add"));
+  if (selectAdd.checked == false) {
+    activeOperator.splice(activeOperator.indexOf("add"), 1);
     Taskmanager();
   }
 });
@@ -102,7 +106,7 @@ selectSub.addEventListener("change", () => {
     Taskmanager();
   }
   if (selectSub.checked == false) {
-    activeOperator.splice(activeOperator.indexOf("sub"));
+    activeOperator.splice(activeOperator.indexOf("sub"), 1);
     Taskmanager();
   }
 });
@@ -113,7 +117,7 @@ selectMult.addEventListener("change", () => {
     Taskmanager();
   }
   if (selectMult.checked == false) {
-    activeOperator.splice(activeOperator.indexOf("mult"));
+    activeOperator.splice(activeOperator.indexOf("mult"), 1);
     Taskmanager();
   }
 });
@@ -124,7 +128,7 @@ selectDiv.addEventListener("change", () => {
     Taskmanager();
   }
   if (selectDiv.checked == false) {
-    activeOperator.splice(activeOperator.indexOf("dev"));
+    activeOperator.splice(activeOperator.indexOf("dev"), 1);
     Taskmanager();
   }
 });
@@ -134,7 +138,7 @@ selectDiv.addEventListener("change", () => {
 function displayTask(input: string) {
   task.innerHTML = input.toString();
   //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  //REMOVE BEVOR USE
+  //REMOVE BEVOR FLIGHT (USE)
   console.log("Result: " + resultTask);
   //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }
@@ -150,6 +154,9 @@ function buttonColor(color: string) {
   }, 700);
 }
 
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//DEBUGGING FUNCTION
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 /*function showArray (){
             console.error("array:");
             

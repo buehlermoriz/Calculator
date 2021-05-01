@@ -1,6 +1,5 @@
-import { add, addInput, ce, dev, mult, solve, sub } from "./calcmode";
+import { addInput, ce, add, sub, mult, dev } from "./calcmode";
 import { equalButtonPressed } from "./index";
-import { checkResult } from "./taskmode";
 
 //DOM utils numPad
 export const buttonList: Array<HTMLInputElement> = [
@@ -121,6 +120,7 @@ document.addEventListener("keydown", (e) => {
     //enter
     case "Enter":
       equalButtonPressed();
+      break;
     //ce
     case "KeyC":
       ce();
@@ -142,10 +142,8 @@ document.addEventListener("keydown", (e) => {
     case "KeyR":
       dev();
       break;
-
     default:
-      console.log("test");
-
+      console.error("Fehler bei Tasteneingabe");
       break;
   }
 });

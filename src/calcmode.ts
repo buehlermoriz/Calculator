@@ -1,4 +1,5 @@
-import { display } from "./dom-utils";
+import { buttonGrey } from "./colors";
+import { buttonAdd, display } from "./dom-utils";
 
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //VARIABLES
@@ -121,8 +122,9 @@ export function dev() {
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //Anzeige
 function changeDisplay(input: number) {
-  display.innerHTML = input.toString();
+  display.textContent = input.toString();
 }
+
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 //OTHER FUNCTIONS
 //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -167,12 +169,15 @@ export function ce() {
   changeSlot();
   changeDisplay(0);
 }
-/*
-export function showSlots(){
-  console.log("Slot1: "+ slotOne);
-  console.log("Number1: "+ numberOne);
-  console.log("Slot2: "+ slotTow);
-  console.log("Number2: "+ numberTwo);
-  console.log("result: "+ result);
+
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+//DEBUGGING FUNCTION
+//----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+/*export function showSlots() {
+  console.log("Slot1: " + slotOne);
+  console.log("Number1: " + numberOne);
+  console.log("Slot2: " + slotTwo);
+  console.log("Number2: " + numberTwo);
+  console.log("result: " + result);
 }
 */
