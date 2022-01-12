@@ -1,12 +1,4 @@
-## How to get started
-
-Type npm i to install dependencies inside of the project folder in the terminal.
-
-Write any source files in typescript inside the source folder, the main file being index.ts as entry file for rollup.
-
-Type tsc to javascript
-
-Link your compiled bundle.js into your HTML-Files.
-
+Hello and Welcome to this little JS/TS Claclulator. You can just fetch the Code and try it by yourself.<br>
+Best Regards Moriz
 
 
